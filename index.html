@@ -184,6 +184,44 @@
             font-size: 0.85rem;
         }
         
+        /* Tab切换 */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .tab-btn {
+            padding: 12px 32px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            color: #fff;
+            border-color: transparent;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
             .week-title { font-size: 1.2rem; }
@@ -195,10 +233,17 @@
 <body>
     <div class="container">
         <header>
-            <h1>📱 平板市场周资讯</h1>
+            <h1 id="page-title">📱 平板市场周资讯</h1>
             <p class="subtitle">2026年3月 | 每周更新</p>
         </header>
         
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('pad')">📱 平板</button>
+            <button class="tab-btn" onclick="switchTab('laptop')">💻 笔记本</button>
+        </div>
+        
+        <!-- 平板内容 -->
+        <div id="pad-content" class="content-section active">
         <div class="stats-grid">
             <div class="stats-card">
                 <div class="stats-number">8</div>
@@ -362,10 +407,149 @@
                 </div>
             </div>
         </div>
+        </div>
+        
+        <!-- 笔记本内容 -->
+        <div id="laptop-content" class="content-section">
+        <div class="stats-grid">
+            <div class="stats-card">
+                <div class="stats-number">5</div>
+                <div class="stats-label">本月新品发布</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number">6</div>
+                <div class="stats-label">参与品牌</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number">3</div>
+                <div class="stats-label">即将发布<br><span style="font-size: 0.75rem; color: #666;">ThinkPad/拯救者/MateBook</span></div>
+            </div>
+        </div>
+        
+        <!-- 第4周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第4周 · 3月24日-30日</span>
+                <span class="week-date">本周</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-lenovo">联想</span>
+                    <div class="news-content">
+                        <div class="news-title">联想 AI 平板发布会定档 3 月 18 日</div>
+                        <div class="news-desc">包括第五代拯救者 Y700、小新 Pro13 系列等新品</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-hot">已发布</span>
+                            <span class="news-tag">3月18日</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第3周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第3周 · 3月17日-23日</span>
+                <span class="week-date">3月17日-23日</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-lenovo">联想</span>
+                    <div class="news-content">
+                        <div class="news-title">联想 CES 2026 新品：ThinkPad T 系列商务本更新</div>
+                        <div class="news-desc">ThinkPad T 系列商务笔记本电脑迎来2026款更新</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-hot">重磅发布</span>
+                            <span class="news-tag">CES 2026</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-lenovo">联想</span>
+                    <div class="news-content">
+                        <div class="news-title">联想拯救者 2026 款游戏本发布</div>
+                        <div class="news-desc">定位高端的游戏本新品，将在 CES 2026 大展期间亮相</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-new">新品发布</span>
+                            <span class="news-tag">CES 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第2周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第2周 · 3月10日-16日</span>
+                <span class="week-date">3月10日-16日</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-market">行业</span>
+                    <div class="news-content">
+                        <div class="news-title">2026年3月笔记本电脑选购指南集中发布</div>
+                        <div class="news-desc">各数码媒体集中发布3月笔记本推荐榜单</div>
+                        <div class="news-meta">
+                            <span class="news-tag">选购指南</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第1周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第1周 · 3月3日-9日</span>
+                <span class="week-date">3月3日-9日</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-huawei">华为</span>
+                    <div class="news-content">
+                        <div class="news-title">华为 MateBook 新品曝光</div>
+                        <div class="news-desc">2026年笔记本电脑产品线更新计划</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-new">新品曝光</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-market">IDC</span>
+                    <div class="news-content">
+                        <div class="news-title">IDC下调2026年全球PC和平板电脑市场预期</div>
+                        <div class="news-desc">受存储芯片供应紧缺及涨价影响，2026年智能手机和平板电脑市场面临挑战</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-report">市场报告</span>
+                            <span class="news-tag">3月12日</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
         
         <footer>
             <p>每周一更新 | 数据来源：公开新闻报道</p>
         </footer>
     </div>
+    
+    <script>
+        function switchTab(tab) {
+            // 更新按钮状态
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // 显示对应内容
+            document.getElementById('pad-content').classList.remove('active');
+            document.getElementById('laptop-content').classList.remove('active');
+            document.getElementById(tab + '-content').classList.add('active');
+            
+            // 更新标题
+            document.getElementById('page-title').textContent = tab === 'pad' ? '📱 平板市场周资讯' : '💻 笔记本市场周资讯';
+        }
+    </script>
 </body>
 </html>
