@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平板市场周资讯 - 2026年3月</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1rem;
+        }
+        
+        .week-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .week-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .week-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+        
+        .week-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .news-list {
+            display: grid;
+            gap: 16px;
+        }
+        
+        .news-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            gap: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateX(4px);
+        }
+        
+        .news-brand {
+            min-width: 70px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .brand-apple { background: linear-gradient(135deg, #555, #333); color: #fff; }
+        .brand-huawei { background: linear-gradient(135deg, #e60023, #ff4d4d); color: #fff; }
+        .brand-xiaomi { background: linear-gradient(135deg, #ff6700, #ff9500); color: #fff; }
+        .brand-lenovo { background: linear-gradient(135deg, #e60023, #ff3333); color: #fff; }
+        .brand-honor { background: linear-gradient(135deg, #00a0e9, #00c8ff); color: #fff; }
+        .brand-vivo { background: linear-gradient(135deg, #00bfaf, #00d4c8); color: #fff; }
+        .brand-oppo { background: linear-gradient(135deg, #00b572, #00d48a); color: #fff; }
+        .brand-redmagic { background: linear-gradient(135deg, #ff0000, #ff4444); color: #fff; }
+        .brand-market { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: #fff; }
+        
+        .news-content {
+            flex: 1;
+        }
+        
+        .news-title {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .news-desc {
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.5;
+        }
+        
+        .news-meta {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .news-tag {
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+        
+        .tag-hot { background: rgba(255, 77, 77, 0.2); color: #ff6b6b; }
+        .tag-new { background: rgba(0, 212, 255, 0.2); color: #00d4ff; }
+        .tag-report { background: rgba(123, 47, 247, 0.2); color: #a29bfe; }
+        
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px 32px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .stats-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+        
+        .stats-label {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .week-title { font-size: 1.2rem; }
+            .news-item { flex-direction: column; }
+            .news-brand { width: fit-content; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 平板市场周资讯</h1>
+            <p class="subtitle">2026年3月 | 每周更新</p>
+        </header>
+        
+        <div class="stats-grid">
+            <div class="stats-card">
+                <div class="stats-number">8</div>
+                <div class="stats-label">本月新品发布</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number">7</div>
+                <div class="stats-label">参与品牌</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number">4</div>
+                <div class="stats-label">即将发布<br><span style="font-size: 0.75rem; color: #666;">vivo/红魔/OPPO/iPad12</span></div>
+            </div>
+        </div>
+        
+        <!-- 第4周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第4周 · 3月24日-30日</span>
+                <span class="week-date">本周</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-vivo">vivo</span>
+                    <div class="news-content">
+                        <div class="news-title">vivo Pad6 Pro 将于3月30日发布</div>
+                        <div class="news-desc">首款4K原彩屏平板，13.2英寸，搭载骁龙8至尊版，13000mAh电池，支持PC级WPS+专业版剪映</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-new">新品发布</span>
+                            <span class="news-tag">4K屏幕</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-oppo">OPPO</span>
+                    <div class="news-content">
+                        <div class="news-title">OPPO Pad mini 曝光：8.8英寸小尺寸旗舰</div>
+                        <div class="news-desc">配备8.8英寸定制高刷新率显示屏，搭载骁龙8 Gen5移动平台，预计2026年推出</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-new">新品曝光</span>
+                            <span class="news-tag">小尺寸</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第3周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第3周 · 3月17日-23日</span>
+                <span class="week-date">3月18日-23日</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-lenovo">联想</span>
+                    <div class="news-content">
+                        <div class="news-title">联想春季发布会：拯救者Y700五代+小新Pro 13发布</div>
+                        <div class="news-desc">拯救者Y700五代：骁龙8至尊版，8.8英寸165Hz，9000mAh，跑分453万<br>小新Pro 13：骁龙8s Gen 4，13英寸3.5K屏，首发价2199元起</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-hot">重磅发布</span>
+                            <span class="news-tag">3月18日</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-redmagic">红魔</span>
+                    <div class="news-content">
+                        <div class="news-title">红魔游戏平板5 Pro 预热：搭载10大黑科技</div>
+                        <div class="news-desc">定位行业领先的高刷游戏平板，预计3月下旬-4月初发布</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-new">新品预热</span>
+                            <span class="news-tag">电竞平板</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-market">洛图科技</span>
+                    <div class="news-content">
+                        <div class="news-title">2025年中国智能平板销量3261万台，同比+13.3%</div>
+                        <div class="news-desc">洛图科技发布2025年平板市场报告，国补政策刺激显著</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-report">市场报告</span>
+                            <span class="news-tag">3月18日</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第2周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第2周 · 3月10日-16日</span>
+                <span class="week-date">3月10日-16日</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-market">行业</span>
+                    <div class="news-content">
+                        <div class="news-title">2026年3月平板选购指南集中发布</div>
+                        <div class="news-desc">各数码媒体集中发布3月平板推荐榜单，涵盖1000-4000元各价位段</div>
+                        <div class="news-meta">
+                            <span class="news-tag">选购指南</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第1周 -->
+        <div class="week-section">
+            <div class="week-header">
+                <span class="week-title">📅 第1周 · 3月3日-9日</span>
+                <span class="week-date">3月3日-9日</span>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-brand brand-apple">苹果</span>
+                    <div class="news-content">
+                        <div class="news-title">iPad Air 2026款发布：M4芯片+Wi-Fi 7</div>
+                        <div class="news-desc">3月2日官网更新，搭载M4芯片，11/13英寸Liquid视网膜屏，支持Wi-Fi 7，Apple Pencil Pro，售价不变</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-hot">重磅发布</span>
+                            <span class="news-tag">3月2日</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-vivo">vivo</span>
+                    <div class="news-content">
+                        <div class="news-title">vivo Pad6 Pro MWC 2026全球首秀</div>
+                        <div class="news-desc">行业首发4K原彩屏，搭载第五代骁龙8至尊版旗舰芯片，13000mAh电池</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-new">全球首秀</span>
+                            <span class="news-tag">3月4日</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-honor">荣耀</span>
+                    <div class="news-content">
+                        <div class="news-title">荣耀MagicPad 4 在MWC 2026发布</div>
+                        <div class="news-desc">4.8mm超薄设计，12GB+256GB/16GB+512GB两个版本</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-new">新品发布</span>
+                            <span class="news-tag">MWC 2026</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-brand brand-market">IDC</span>
+                    <div class="news-content">
+                        <div class="news-title">IDC下调2026年全球PC和平板电脑市场预期</div>
+                        <div class="news-desc">受存储芯片供应紧缺及涨价影响，2026年智能手机市场将迎来史上最大年度出货跌幅</div>
+                        <div class="news-meta">
+                            <span class="news-tag tag-report">市场报告</span>
+                            <span class="news-tag">3月12日</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>每周一更新 | 数据来源：公开新闻报道</p>
+        </footer>
+    </div>
+</body>
+</html>
